@@ -43,7 +43,7 @@ userRouter.post("/login", async (req, res) => {
     }
     if (user.wrong_count >= 5 && user.deadline > curr_time) {
       return res.status(401).send({
-        msg: `you are blocked by the admin`,
+        msg: `you are blocked by the admin try again later`,
       });
     }
     if (user.wrong_count >= 5 && user.deadline < curr_time) {
