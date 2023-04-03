@@ -43,9 +43,7 @@ userRouter.post("/login", async (req, res) => {
     }
     if (user.wrong_count >= 5 && user.deadline > curr_time) {
       return res.status(401).send({
-        msg: `you are blocked try after ${new Date(
-          user.deadline
-        ).toLocaleString()}`,
+        msg: `you are blocked by the admin`,
       });
     }
     if (user.wrong_count >= 5 && user.deadline < curr_time) {
@@ -68,7 +66,7 @@ userRouter.post("/login", async (req, res) => {
         }
         user.save();
         res.status(401).send({
-          msg: `Wrong Password its your ${user.wrong_count} failed attempts`,
+          msg: `Wrong Password its your ${user.wrong_count} consicutive failed attempts`,
         });
       }
     });
